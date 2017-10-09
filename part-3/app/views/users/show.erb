@@ -1,0 +1,29 @@
+<h3>Profile Page</h3>
+
+<h4><%= @user.first_name %>'s Restaurants</h4>
+
+<% if @user.restaurants.any? %>
+<ul>
+  <% @user.restaurants.each do |restaurant| %>
+  <li><a href="/restaurants/<%= restaurant.id %>"><%= restaurant.name %></a></li>
+  <% end %>
+</ul>
+<% else %>
+  <p>This user hasn't created any restaurants</p>
+<% end %>
+
+<hr>
+<h4><%= @user.first_name %>'s Reviews</h4>
+
+<% if @user.reviews.any? %>
+<ul>
+  <% @user.reviews.each do |review| %>
+  <li>
+    <p><%= review.body %></p>
+    <p>- <%= p review.restaurant.name %></p>
+  </li>
+  <% end %>
+</ul>
+<% else %>
+  <p>This user hasn't created any restaurants</p>
+<% end %>

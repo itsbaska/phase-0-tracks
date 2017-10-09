@@ -1,0 +1,21 @@
+<h4>Reviews</h4>
+
+<ul>
+<% @restaurant.reviews.each do |review| %>
+  <li class="review-list">
+    <p><%= review.body %></p>
+    <p><a href="/users/<%= review.user.id %>"><%= review.user.username %></a>  |  <%= review.created_at %></p>
+      <% if authorized?(review.user) %>
+      <a href="/restaurants/<%= review.restaurant.id %>/reviews/<%= review.id %>/edit">Edit</a>
+      <%= p review.restaurant.id %>
+      <%= p review.id %>
+
+      <form method="POST" action="/restaurants/<%= review.restaurant.id %>/reviews/<%= review.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete">
+      </form>
+    <% end %>
+
+  </li>
+<% end %>
+</ul>

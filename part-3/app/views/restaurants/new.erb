@@ -1,0 +1,9 @@
+<h3 class="login-title">New Restaurant</h3>
+
+<% if @errors %>
+<%= erb :"_errors", locals: {errors: @errors} %>
+<% end %>
+
+<form class="user-form" method="POST" action="/restaurants">
+  <%= erb :"partials/_restaurant_form" %>
+</form>

@@ -1,0 +1,9 @@
+<h3>New Review</h3>
+
+<% if @errors %>
+<%= erb :"_errors", locals: {errors: @errors} %>
+<% end %>
+
+<form class="user-form" method="POST" action="/restaurants/<%= @restaurant.id %>/reviews">
+  <%= erb :"partials/_review_form" %>
+</form>

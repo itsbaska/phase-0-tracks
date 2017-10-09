@@ -1,0 +1,11 @@
+<h3>Edit Review</h3>
+
+<% if @errors %>
+<%= erb :"_errors", locals: {errors: @errors} %>
+<% end %>
+
+<form method="POST" action="/restaurants/<%= @restaurant.id %>/reviews/<%= @review.id %>">
+  <input type="hidden" name="_method" value="PUT">
+  <%= erb :"partials/_review_form", locals: {review: @review} %>
+
+</form>

@@ -1,0 +1,22 @@
+<h3>Restaurants</h3>
+
+<ul>
+<% @restaurants.each do |restaurant| %>
+  <li class="restaurant-list">
+    <p><a href="/restaurants/<%= restaurant.id %>"><%= restaurant.name %></a></p>
+    <p><%= restaurant.location %></p>
+    <p><%= restaurant.cuisine_type %></p>
+    <% if authorized?(restaurant.user) %>
+      <a href="/restaurants/<%= restaurant.id %>/edit">Edit</a>
+      <form method="POST" action="/restaurants/<%= restaurant.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete">
+      </form>
+    <% end %>
+  </li>
+<% end %>
+</ul>
+
+<% if logged_in? %>
+<a href="/restaurants/new">Create Restaurant</a>
+<% end %>
